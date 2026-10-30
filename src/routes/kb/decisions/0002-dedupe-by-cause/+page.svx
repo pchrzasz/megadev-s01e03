@@ -15,6 +15,21 @@ signature: v1.eyJzdWIiOiIxNjkxIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYX
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
+## Engineering update · 5 October
+
+The course desk reports #4471 closed on 5 October:
+
+- Parser: **fixed** — `fix(dates): parse dd/mm for eu locales`.
+- Hint: **won’t fix** — booking-v3 form retired.
+
+Close the parser ticket as completed. Close the hint ticket as not planned,
+with retirement as the reason. These are different outcomes: retirement removes
+that form from use; it does not establish that its hint was repaired.
+The report counts below describe the exported snapshot through 4 October.
+The desk update supplies later evidence; the snapshot alone could not prove
+these outcomes. Our reference implementation is supplementary work, not the
+source of the desk’s production closure.
+
 ## Decision and scope
 
 Replace subject-only merging with cause-based triage. This proposal supersedes

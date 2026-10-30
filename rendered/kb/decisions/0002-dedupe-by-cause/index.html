@@ -52,7 +52,13 @@
   .stamp.svelte-1280m42 b:where(.svelte-1280m42) { color: var(--accent); letter-spacing: 0.04em; }
   .missing.svelte-1280m42 { color: var(--warn); }
  .svelte-1280m42{}
-</style></head><body><!--[--><div class="kb svelte-e2jw2j"><header class="svelte-e2jw2j"><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">0002 · Split #4471 and triage by cause</h1> <p class="meta svelte-e2jw2j"><span class="svelte-e2jw2j">owner <b class="svelte-e2jw2j">pchrzasz</b></span> <span class="status proposed svelte-e2jw2j">proposed</span> <span class="svelte-e2jw2j">reviewed 2026-10-30 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main class="svelte-e2jw2j"><h2>Decision and scope</h2> <p>Replace subject-only merging with cause-based triage. This proposal supersedes <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> when the desk accepts it;
+</style></head><body><!--[--><div class="kb svelte-e2jw2j"><header class="svelte-e2jw2j"><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">0002 · Split #4471 and triage by cause</h1> <p class="meta svelte-e2jw2j"><span class="svelte-e2jw2j">owner <b class="svelte-e2jw2j">pchrzasz</b></span> <span class="status proposed svelte-e2jw2j">proposed</span> <span class="svelte-e2jw2j">reviewed 2026-10-30 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main class="svelte-e2jw2j"><h2>Engineering update · 5 October</h2> <p>The course desk reports #4471 closed on 5 October:</p> <ul><li>Parser: <strong>fixed</strong> — <code>fix(dates): parse dd/mm for eu locales</code>.</li> <li>Hint: <strong>won’t fix</strong> — booking-v3 form retired.</li></ul> <p>Close the parser ticket as completed. Close the hint ticket as not planned,
+with retirement as the reason. These are different outcomes: retirement removes
+that form from use; it does not establish that its hint was repaired.
+The report counts below describe the exported snapshot through 4 October.
+The desk update supplies later evidence; the snapshot alone could not prove
+these outcomes. Our reference implementation is supplementary work, not the
+source of the desk’s production closure.</p> <h2>Decision and scope</h2> <p>Replace subject-only merging with cause-based triage. This proposal supersedes <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> when the desk accepts it;
 the accepted historical record remains unchanged. The old triage page is stale,
 and its subject-only rule contradicts the behavior of its own interactive examples.</p> <p>The claim on <a href="/kb/incidents/4471">incident #4471</a> that one fix covers the ticket is
 not supported by the rendered evidence. Split its parser and hint problems into
