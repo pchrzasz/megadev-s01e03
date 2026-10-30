@@ -60,3 +60,18 @@ Re-render to refresh values after a data or source change.
 
 `analysis.json` records each group's report IDs. `issues/` contains the two
 proposed GitHub issue bodies. No product fix or desk acceptance is claimed.
+
+## Reference fix for issues #1 and #2
+
+`src/lib/kb/tenant-date.ts` provides `parseTenantDate(input, tenant.locale)`
+and `dateHint(tenant.locale)`. Both use the same numeric Gregorian date order.
+The parser requires a supported tenant locale and four-digit year, validates the
+calendar date, and returns date-only fields without a timezone conversion.
+Use the parser for each app/email/form intake path and the hint for both form
+versions. Do not pass the reporter's browser locale.
+
+Run `node --test scripts/tenant-date.test.mjs` for regression checks.
+This is a reference implementation: this export has no product intake handlers,
+booking-form UI, persistence or invite pipeline. Production integration and
+end-to-end verification remain required. The five exceptional timing reports
+also remain unresolved; this implementation does not diagnose them.
