@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import { uniqueById, groupByCause } from '../src/lib/kb/causes.ts';
+const base = new URL('../src/lib/data/', import.meta.url);
+const read = name => JSON.parse(fs.readFileSync(new URL(name, base), 'utf8'));
+const raw = read('reports-4471.json');
+const tenants = fs.readdirSync(new URL('tenants/', base)).map(f => read('tenants/' + f));
+const reports = uniqueById(raw).filter(r => r.mergedInto === 4471);
+const groups = groupByCause(reports, r => tenants.find(t => t.handle === r.tenant));
+const summary = {rows: raw.length, unique: reports.length, groups: groups.map(({reports, ...group}) => ({...group, count: reports.length, reportIds: reports.map(r => r.id)}))};
+fs.writeFileSync(new URL('../analysis.json', import.meta.url), JSON.stringify(summary, null, 2)+'\n');
+console.log(JSON.stringify({rows:raw.length, unique:reports.length, groups:summary.groups.map(({reportIds,...g})=>g)},null,2));

@@ -1,0 +1,84 @@
+---
+layout: runbook
+title: '0002 · Split #4471 and triage by cause'
+owner: pchrzasz
+status: proposed
+reviewed: 2026-10-30
+signature: pchrzasz / Codex / S01E03 / 2026-10-30
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import ReviewEvidence from '#lib/kb/ReviewEvidence.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+## Decision and scope
+
+Replace subject-only merging with cause-based triage. This proposal supersedes
+[decision 0001](/kb/decisions/0001-dedupe-by-subject) when the desk accepts it;
+the accepted historical record remains unchanged. The old triage page is stale,
+and its subject-only rule contradicts the behavior of its own interactive examples.
+
+The claim on [incident #4471](/kb/incidents/4471) that one fix covers the ticket is
+not supported by the rendered evidence. Split its parser and hint problems into
+separate tickets. A known status records awareness, not resolution.
+
+## What the export actually shows
+
+<CauseTable ticket={4471} />
+
+The **parser** reads month first for tenants whose locale writes day first. For
+example, report R-41200 says a reminder for 7 April went out on 4 July. Fix the
+shared parser to use the tenant's date convention and reject ambiguous input
+when the convention is unavailable.
+
+The **hint** problem occurs through booking-v3 forms for day-first tenants.
+The field prints MM/DD/YYYY while the form interprets the entry using the tenant's
+day-first convention. Align the displayed hint with the form's actual parser.
+For example, R-41230 reports 6 January appearing as 1 June for copper.studio.
+Changing only the shared parser cannot repair this contradictory instruction.
+
+Use tenant configuration and channel, not the reporter's browser locale or
+intake tag. The latter records an intake guess, not a confirmed cause.
+
+<ReviewEvidence />
+
+## The queue still needs attention
+
+<QueueTimeline ticket={4471} />
+
+Reports arrived from April onward; merging began in July. The July merge spike
+is backlog processing, not the start of the incident. New reports continue into
+October, after the incident page's last review. The export ends on 4 October;
+it cannot establish what happened after that snapshot or prove a fix shipped.
+
+## How the desk should triage now
+
+1. Deduplicate export rows by report ID, then select the ticket being investigated.
+2. Read the body and look up the tenant's locale and booking-form version.
+3. Match a supported cause using that configuration and the report's channel.
+4. Merge only when the cause matches. A shared subject is insufficient; different
+   subjects can still describe the same cause.
+5. Keep unknown tenants and contradictory symptoms for investigation. Do not
+   force them into a known cause merely because their subject looks familiar.
+6. Track incoming and merged timestamps separately; review continuing reports
+   and regression evidence before closing either ticket.
+
+<DedupeExplorer />
+
+## Verification and follow-up
+
+Test the shared parser with day-first tenants across app and email channels,
+booking-v2 forms, ambiguous dates and days above twelve. Test booking-v3 hints
+against the tenant-aware form parser independently. Include a month-first
+tenant as a control and confirm that a fix does not reverse valid dates.
+
+The supplied classifier is a routing rule, not proof of every report's root
+cause. Investigate the exceptional bodies separately before asserting a third
+confirmed bug. Keep their existing count assignment visible until evidence
+supports moving them.
+
+<RenderStamp {signature} />

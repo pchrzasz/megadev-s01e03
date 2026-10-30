@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><!--e2jw2j--><!----><title>Triage: duplicate reports · support kb</title><style id="svelte-e2jw2j">
+  :root {
+    --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --line: #e3e0d8;
+    --accent: #2f6f5e; --warn: #b4501f; --warn-bg: #fbeee6; --note-bg: #eef5f2;
+    --mono: ui-monospace, 'Cascadia Code', Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #171716; --fg: #ecebe6; --muted: #9c9a93; --line: #34332f;
+      --accent: #6fbfa6; --warn: #f0905d; --warn-bg: #3a2418; --note-bg: #1d2c27;
+    }
+  }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, sans-serif; }
+  .kb table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92rem; }
+  .kb th, .kb td { border-bottom: 1px solid var(--line); padding: 0.35rem 0.5rem; text-align: left; }
+  .kb code { font-family: var(--mono); font-size: 0.88em; }
+  .kb a { color: var(--accent); }
+  .kb.svelte-e2jw2j { max-width: 760px; margin: 0 auto; padding: 2rem 16px 4rem; }
+  .crumb.svelte-e2jw2j { font: 0.8rem var(--mono); text-decoration: none; color: var(--muted); }
+  h1.svelte-e2jw2j { margin: 0.25rem 0 0.5rem; line-height: 1.2; }
+  .meta.svelte-e2jw2j { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .status.svelte-e2jw2j { border: 1px solid var(--line); border-radius: 99px; padding: 0 0.6rem; }
+  .stale.svelte-e2jw2j { color: var(--warn); font-weight: 600; }
+  .banner.svelte-e2jw2j { background: var(--warn-bg); color: var(--warn); padding: 0.6rem 1rem; border-radius: 6px; }
+  footer.svelte-e2jw2j { margin-top: 3rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+ .svelte-e2jw2j{}
+</style><style id="svelte-17bri61">
+  aside.svelte-17bri61 { border-left: 4px solid var(--accent); padding: 0.5rem 1rem; margin: 1rem 0; background: var(--note-bg); }
+  aside.warn.svelte-17bri61 { border-color: var(--warn); background: var(--warn-bg); }
+ .svelte-17bri61{}
+</style><style id="svelte-gq0h2h">
+  .try.svelte-gq0h2h { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+  fieldset.svelte-gq0h2h { display: grid; gap: 0.4rem; border: 1px solid var(--line); border-radius: 6px; }
+  .verdict.svelte-gq0h2h { grid-column: 1 / -1; margin: 0; font-weight: 600; color: var(--muted); }
+  .dup.svelte-gq0h2h { color: var(--accent); font-weight: 600; }
+ .svelte-gq0h2h{}
+</style></head><body><!--[--><div class="kb svelte-e2jw2j"><header class="svelte-e2jw2j"><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">Triage: duplicate reports</h1> <p class="meta svelte-e2jw2j"><span class="svelte-e2jw2j">owner <b class="svelte-e2jw2j">support desk</b></span> <span class="status accepted svelte-e2jw2j">accepted</span> <span class="svelte-e2jw2j stale">reviewed 2024-06-11 · 871 days ago · stale</span></p></header> <!--[0--><p class="banner svelte-e2jw2j">Nobody has re-read this page in 871 days. Check it against the live views before you rely on it.</p><!--]--> <main class="svelte-e2jw2j"><p>A busy morning brings hundreds of reports about the same thing. We keep one ticket per issue
+and merge every duplicate into it, so engineering sees one thread with a count.</p> <h2>The rule</h2> <p>A report is a duplicate when its <strong>subject line matches</strong> the subject of an open ticket
+(<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>):</p> <ol><li>lowercase the subject and strip punctuation;</li> <li>look for an open ticket with the same subject;</li> <li>found one: merge the report into it. None: open a new ticket.</li></ol> <aside class="note svelte-17bri61"><!---->Matching on subject is fast and needs no reading. During an incident that matters more than
+anything else.<!----></aside><!----> <h2>Try it</h2> <div class="try svelte-gq0h2h"><!--[--><fieldset class="svelte-gq0h2h"><legend class="svelte-gq0h2h">report A</legend> <select aria-label="tenant" class="svelte-gq0h2h"><!--[--><option class="svelte-gq0h2h" selected="">alder.physio</option><option class="svelte-gq0h2h">copper.studio</option><option class="svelte-gq0h2h">harbour.dental</option><option class="svelte-gq0h2h">kettle.books</option><option class="svelte-gq0h2h">lantern.row</option><option class="svelte-gq0h2h">long.table</option><option class="svelte-gq0h2h">morrow.tax</option><option class="svelte-gq0h2h">nine.lanterns</option><option class="svelte-gq0h2h">pale.harbour</option><option class="svelte-gq0h2h">ridge.clinic</option><option class="svelte-gq0h2h">stone.and.sons</option><!--]--></select> <select aria-label="channel" class="svelte-gq0h2h"><!--[--><option class="svelte-gq0h2h">app</option><option class="svelte-gq0h2h">email</option><option class="svelte-gq0h2h" selected="">form</option><!--]--></select> <input value="Booking on the wrong date" aria-label="subject" class="svelte-gq0h2h"/> <code class="svelte-gq0h2h">hint</code></fieldset><fieldset class="svelte-gq0h2h"><legend class="svelte-gq0h2h">report B</legend> <select aria-label="tenant" class="svelte-gq0h2h"><!--[--><option class="svelte-gq0h2h">alder.physio</option><option class="svelte-gq0h2h">copper.studio</option><option class="svelte-gq0h2h">harbour.dental</option><option class="svelte-gq0h2h" selected="">kettle.books</option><option class="svelte-gq0h2h">lantern.row</option><option class="svelte-gq0h2h">long.table</option><option class="svelte-gq0h2h">morrow.tax</option><option class="svelte-gq0h2h">nine.lanterns</option><option class="svelte-gq0h2h">pale.harbour</option><option class="svelte-gq0h2h">ridge.clinic</option><option class="svelte-gq0h2h">stone.and.sons</option><!--]--></select> <select aria-label="channel" class="svelte-gq0h2h"><!--[--><option class="svelte-gq0h2h">app</option><option class="svelte-gq0h2h">email</option><option class="svelte-gq0h2h" selected="">form</option><!--]--></select> <input value="Booking on the wrong date" aria-label="subject" class="svelte-gq0h2h"/> <code class="svelte-gq0h2h">parser</code></fieldset><!--]--> <p class="verdict svelte-gq0h2h">different causes — keep apart</p></div> <table class="svelte-gq0h2h"><thead class="svelte-gq0h2h"><tr class="svelte-gq0h2h"><th class="svelte-gq0h2h">case</th><th class="svelte-gq0h2h">same subject</th><th class="svelte-gq0h2h">same cause</th></tr></thead><tbody class="svelte-gq0h2h"><!--[--><tr class="svelte-gq0h2h"><td class="svelte-gq0h2h">app vs email, same tenant</td><td class="svelte-gq0h2h">no</td><td class="svelte-gq0h2h dup">yes</td></tr><tr class="svelte-gq0h2h"><td class="svelte-gq0h2h">same subject, same tenant, different channel</td><td class="svelte-gq0h2h">yes</td><td class="svelte-gq0h2h">no</td></tr><tr class="svelte-gq0h2h"><td class="svelte-gq0h2h">same subject, same channel, different tenant</td><td class="svelte-gq0h2h">yes</td><td class="svelte-gq0h2h">no</td></tr><tr class="svelte-gq0h2h"><td class="svelte-gq0h2h">different subject, same way in</td><td class="svelte-gq0h2h">no</td><td class="svelte-gq0h2h dup">yes</td></tr><tr class="svelte-gq0h2h"><td class="svelte-gq0h2h">no tenant on file</td><td class="svelte-gq0h2h">yes</td><td class="svelte-gq0h2h">no</td></tr><!--]--></tbody></table><!----> <h2>When you are unsure</h2> <p>Merge. Splitting a ticket later is cheaper than two engineers chasing the same bug.</p><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!----><!--]--></body></html>
