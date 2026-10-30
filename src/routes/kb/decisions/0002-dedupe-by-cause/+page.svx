@@ -4,7 +4,7 @@ title: '0002 · Split #4471 and triage by cause'
 owner: pchrzasz
 status: proposed
 reviewed: 2026-10-30
-signature: pchrzasz / Codex / S01E03 / 2026-10-30
+signature: v1.eyJzdWIiOiIxNjkxIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzODc2NjksImV4cCI6MTc5MzQ3NDA2OX0.ZvUh_o8JZwfDpii7UsQqU_u6mvvP0_iAsfCE285OQtg
 ---
 
 <script>
